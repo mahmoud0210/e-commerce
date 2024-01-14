@@ -109,7 +109,7 @@
                 <i class="far fa-fw fa-window-maximize"></i>
                 <span>Users</span>
             </a>
-        @if (auth()->user()->hasrole('administrator'))
+        {{-- @if (auth()->user()->hasrole('administrator')) --}}
             <div id="user" class="collapse" aria-labelledby="headingBootstrap"
                 data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
@@ -117,8 +117,8 @@
                     <a class="collapse-item" href="{{ url('/'. ($page ='users')) }}">View all users</a>
                     <a class="collapse-item" href="{{route('users.create')}}">Create</a>
                 </div>
-            @endif
-            
+            {{-- @endif --}}
+
         </li>
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#order"

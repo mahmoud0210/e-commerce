@@ -33,13 +33,15 @@ class SendEmailNotificationController extends Controller
             'urlaction'=>'required'
         ]);
 
-        $users=User::all();
+        $users=User::where('id','1')->get();
         $data=[
             'head'=>$request->head,
             'body'=>$request->body,
             'urlaction'=>$request->urlaction,
         ];
-        Notification::send($users,new emailNotification($data));
+        foreach($users as $user){
+            Notification::send($user,new emailNotification($data));
+        }
         return redirect('/send.email')->with('success','Email sends successfuly');
     }
 }
