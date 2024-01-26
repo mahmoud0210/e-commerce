@@ -29,7 +29,7 @@
           <table class="table align-items-center table-flush">
             <thead class="thead-light">
               <tr>
-                <th>SN</th>                
+                <th>SN</th>
                 <th>Image</th>
                 <th>Name</th>
                 <th>Description</th>
@@ -38,10 +38,10 @@
                 <th>Vendor</th>
                 <th>Brand</th>
                 <th>Actions</th>
-                        
+
               </tr>
             </thead>
-                    
+
             <tbody>
               @if(count($products)>0)
               @foreach($products as $key=> $product)
@@ -59,22 +59,23 @@
                 <td>
                   @if(Auth::user()->id==$product->vendor_id)
                   <a class="btn btn-primary" href="{{ route('products.edit',$product->id) }}">Edit</a>
+                  <a href="{{ route('product.vendor.soft.delete',$product->id)}}" class="btn btn-warning">SoftDelete</a>
                   @endif
                   <a class="btn btn-info" href="{{ route('vendor.products.show',$product->id) }}">Show</a>
-                  <a href="{{ route('product.vendor.soft.delete',$product->id)}}" class="btn btn-warning">SoftDelete</a>
+
                 </td>
 
-                 
+
               </tr>
               @endforeach
               @else
               <td>No product created yet!</td>
               @endif
-            
+
 
             </tbody>
           </table>
-          
+
         </div>
       </div>
     </div>

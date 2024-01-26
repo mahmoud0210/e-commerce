@@ -29,7 +29,7 @@
           <table class="table align-items-center table-flush">
             <thead class="thead-light">
               <tr>
-                <th>SN</th>                
+                <th>SN</th>
                 <th>Image</th>
                 <th>Name</th>
                 <th>Description</th>
@@ -37,10 +37,10 @@
                 <th>Category</th>
                 <th>Vendor</th>
                 <th>Actions</th>
-                        
+
               </tr>
             </thead>
-                    
+
             <tbody>
               @if(count($products)>0)
               @foreach($products as $key=> $product)
@@ -59,13 +59,13 @@
                   <a href="{{ route('products.soft.delete',$product->id)}}" class="btn btn-warning">SoftDelete</a>
                 </td>
 
-                 
+
               </tr>
               @endforeach
               @else
               <td>No product created yet!</td>
               @endif
-            
+
 
             </tbody>
           </table>

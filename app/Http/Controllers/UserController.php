@@ -133,6 +133,7 @@ class UserController extends Controller
     public function acceptVendor(Request $request){
         $vendor = User::where('id', $request->id)-> first();
         $vendor['as_vendor'] = 1;
+        $vendor['role']='vendor';
         $vendor->attachRole('vendor');
         $vendor->update();
         $msg = "Welcome" ;
