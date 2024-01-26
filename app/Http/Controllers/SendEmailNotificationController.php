@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\SendEmailToAllUsersjob;
 use App\Models\User;
 use App\Notifications\emailNotification;
 use Illuminate\Http\Request;
@@ -32,16 +33,13 @@ class SendEmailNotificationController extends Controller
             'body'=>'required',
             'urlaction'=>'required'
         ]);
-
-        $users=User::where('id','1')->get();
+        $users=User::all();
         $data=[
             'head'=>$request->head,
             'body'=>$request->body,
             'urlaction'=>$request->urlaction,
         ];
-        foreach($users as $user){
-            Notification::send($user,new emailNotification($data));
-        }
-        return redirect('/send.email')->with('success','Email sends successfuly');
+        SendEmailToAllUsersjob::dispatch($users,$data);
+        return redirect('/send.email')->with('success','Email will send as soon as possible');
     }
 }
